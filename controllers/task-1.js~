@@ -1,0 +1,52 @@
+// Include utility module
+var Utility = require("../lib/Utility.js");
+
+// Include views file
+var View = require("../views/View.js");
+
+// Use module function
+exports.getTitles = function (request,response) {
+	// check if address provided in url or not
+	if(request.url.indexOf("address=") == -1){
+		View.addressInUrl(response);
+		return;
+	}
+
+	// set header
+	View.header(response);
+	// set header title
+	View.titleHeader(response);
+
+	// check is single or multiple addresses given in url
+	if(request.query.address instanceof Array){
+		// loop over url address to handle case of multiple titles
+		for(var counter = 0;counter < request.query.address.length; counter++){
+			var checkEnd = 0;
+			// use utility module requestTitle function
+			Utility.requestTitle(request.query.address[counter],function(title){
+				// counter to check end
+				checkEnd++;
+				// print title
+				View.title(response,title);
+				
+				// check if end reached
+				if(request.query.address.length == checkEnd){
+					// set footer title
+					View.titleFooter(response);
+					// set footer
+					View.footer(response);
+				}
+			});
+		}
+	}else{
+		// use utility module requestTitle function
+		Utility.requestTitle(request.query.address,function(title){
+			// print title
+			View.title(response,title);
+			// set footer title
+			View.titleFooter(response);
+			// set footer
+			View.footer(response);
+		});
+	}
+};
