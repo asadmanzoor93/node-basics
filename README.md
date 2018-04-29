@@ -53,8 +53,7 @@ To start the server:
 Run following example commands for each of the questions:<br>
 
     http://localhost:8081/task-1/I/want/title/?address=www.google.com.pk
-    http://localhost:8081/test-2/I/want/title/?address=www.google.com.pk&address=www.twitter.com
-
-
+    http://localhost:8081/task-2/I/want/title/?address=www.google.com.pk&address=www.twitter.com
+    http://localhost:8081/task-3/I/want/title/?address=www.google.com.pk&address=www.twitter.com
 
 

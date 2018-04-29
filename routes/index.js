@@ -11,6 +11,8 @@ var app = express();
 app.get("/task-1/I/want/title/", tasksController.getTitles);
 // Task 2
 app.get("/task-2/I/want/title/", tasksController.getTitlesAsync);
+// Task 3
+app.get("/task-3/I/want/title/", tasksController.getTitlesRSVP);
 
 // empty url handling
 app.get("*", function (request,response) {
