@@ -17,7 +17,7 @@ module.exports = {
 	},
 	titleHeader : function(response){
 		if(!response.finished){
-			response.write("<h2>Titles of websites given: </h2>");
+			response.write("<h1>Following are the titles of given websites: </h2>");
 			response.write("<ul>")
 		}
 	},
@@ -37,5 +37,10 @@ module.exports = {
 			this.writeFooter(response);
 			response.end();
 		}	
+	},
+	errorLog : function(response,msg){
+		if(!response.finished){
+			response.write(msg);
+		}
 	}
 }
